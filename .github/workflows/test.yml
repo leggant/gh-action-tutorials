@@ -1,0 +1,17 @@
+name: test app code
+on:
+  push:
+jobs:
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get app code
+        uses: actions/checkout@v3
+      - name: configure node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install node packages
+        run: npm ci
+      - name: execute tests
+        run: npm test
